@@ -1,10 +1,9 @@
-from base_caching import BaseCaching 
+from base_caching import BaseCaching
 
 
 class BasicCachea(BaseCaching):
     def __init__(self):
-        self.cache_data = {}
-
+        self.cache_data = BaseCaching()
 
     def put(self, key, item):
         """ Add an item in the cache"""
