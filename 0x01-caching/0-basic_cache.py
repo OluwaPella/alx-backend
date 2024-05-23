@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 from base_caching import BaseCaching
 
 class BasicCache(BaseCaching):
-    def __init__(self):
-        super().__init__()
+
 
     def put(self, key, item):
         """ Add an item in the cache"""
