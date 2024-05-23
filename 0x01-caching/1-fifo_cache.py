@@ -3,6 +3,7 @@ from base_caching import BaseCaching
 
 class FIFOCache( BaseCaching):
     def __init__(self):
+
         super().__init__()
 
     def put(self, key, item):
@@ -12,7 +13,7 @@ class FIFOCache( BaseCaching):
         if len(self.cache_data) >  BaseCaching.MAX_ITEMS:
             first_key = list(self.cache_data.keys())[0]
             del self.cache_data[first_key]
-            print("DISCARD: {}".format(first_key))
+            print("DISCARD:", first_key)
 
     def get(self, key):
         return self.cache_data.get(key, None)
