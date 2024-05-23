@@ -15,4 +15,4 @@ class BasicCache(BaseCaching):
     def get(self, key):
         """ Get an item by key and return it's value
         """
-        return self.cache_data.get(key)
+        return self.cache_data.get(key, None)
