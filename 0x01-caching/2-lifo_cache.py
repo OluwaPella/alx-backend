@@ -1,24 +1,24 @@
-#!/usr/bin/env python3
-""" LIFO Caching
-"""
-from base_caching import BaseCaching
+#!/usr/bin/python3
+""" doc doc doc """
+BaseCaching = __import__("base_caching").BaseCaching
+
 
 class LIFOCache(BaseCaching):
-    """LIFO Caching"""
+    """doc doc doc"""
+
     def __init__(self):
-        """Initiliaze"""
+        """doc doc doc"""
         super().__init__()
 
     def put(self, key, item):
-        """Add an item in the cache"""
-        if key is None or item is None:
-            return
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            remove_key = list(self.cache_data.keys())[-1]
-            self.cache_data.pop(remove_key)
-            print("DISCARD:", remove_key)
-        self.cache_data[key] = item 
+        """doc doc doc"""
+        if key and item:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                removed = list(self.cache_data.keys())[-1]
+                self.cache_data.pop(removed)
+                print("DISCARD: {}".format(removed))
+            self.cache_data[key] = item
 
     def get(self, key):
-        """ Get an item by key"""
-        return self.cache_data.get(key, None)
+        """doc doc doc"""
+        return self.cache_data.get(key)
