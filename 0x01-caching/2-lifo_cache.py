@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ LIFO Caching
 """
-from collections import deque
+from collections import OrderedDict
 from base_caching import BaseCaching
 
 class LIFOCache(BaseCaching):
@@ -11,7 +11,7 @@ class LIFOCache(BaseCaching):
         """ Initiliaze
         """
         super().__init__()
-        self.order = deque()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """ Add an item in the cache
@@ -20,10 +20,8 @@ class LIFOCache(BaseCaching):
             return
         self.cache_data[key] = item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            last_key, _ = self.order.pop()
-            del self.cache_data[last_key]
+            last_key, _ = self.cache_data.popitem(True)
             print("DISCARD:", last_key)
-        self.order.append(key)
 
     def get(self, key):
         """ Get an item by key
