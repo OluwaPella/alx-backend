@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ doc doc doc """
-BaseCaching = __import__("base_caching").BaseCaching
+from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
@@ -12,11 +12,11 @@ class LIFOCache(BaseCaching):
 
     def put(self, key, item):
         """doc doc doc"""
-        if key and item:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                removed = list(self.cache_data.keys())[-1]
-                self.cache_data.pop(removed)
-                print("DISCARD: {}".format(removed))
+        if key  and item:
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                removed_key = list(self.cache_data.keys())[-1]
+                self.cache_data.pop(removed_key)
+                print("DISCARD: {}".format(removed_key))
             self.cache_data[key] = item
 
     def get(self, key):
