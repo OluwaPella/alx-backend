@@ -13,7 +13,7 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """doc doc doc"""
         if key  and item:
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 removed = list(self.cache_data.keys())[-1]
                 self.cache_data.pop(removed)
                 print("DISCARD: {}".format(removed))
