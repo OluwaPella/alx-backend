@@ -6,9 +6,7 @@ from base_caching import BaseCaching
 
 class FIFOCache(BaseCaching):
 
-
-    """ represents a caching system
-    """
+    """represents a caching system"""
     def __init__(self):
         """ Initiliaze the cache"""
         super().__init__()
@@ -29,5 +27,4 @@ class FIFOCache(BaseCaching):
         """Retrieves an item by key.
         """
         return self.cache_data.get(key, None)
-
     
