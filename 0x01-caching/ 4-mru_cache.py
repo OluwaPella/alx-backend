@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """MRUCache
 """
-
-from base_caching import BaseCaching
 from collections import OrderedDict
+from base_caching import BaseCaching
 
 class MRUCache(BaseCaching):
     """
@@ -19,7 +18,16 @@ class MRUCache(BaseCaching):
         """ adding item to cache"""
         if key is None or item is None:
             return
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            mru_key = self.cache_data.popitem(key, last=False)
+            print("DISCARD", mru_key)
+            self.cache_data.move_to_end(key, last=False)
+        else:
+            self.cache_data[key] = item
+
         
     def get(self, key):
         """getting data from cache using the key"""
-        return self.cache_data(key)
+        if key is not None and key in self.cache_data:
+            self.cache_data.move_to_end(key, last=False)
+        return self.cache_data(key, None)
