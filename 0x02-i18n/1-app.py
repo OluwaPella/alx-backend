@@ -13,7 +13,7 @@ def get_index():
     """return index.html
     """
     return render_template('1-index.html')
-class config(object):
+class config:
     """Represents a Flask Babel configuration.
     """
     LANGUAGES = ["en", "fr"]
