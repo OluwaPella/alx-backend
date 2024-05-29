@@ -11,8 +11,7 @@ from flask_babel import Babel
 app = Flask(__name__)
 
 class Config:
-    """
-    Represents a Flask Babel configuration.
+    """Represents a Flask Babel configuration.
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
@@ -26,8 +25,7 @@ babel = Babel(app)
 
 @app.route('/')
 def get_index():
-    """
-    return 1-index.html.
+    """return 1-index.html.
     """
     return render_template('1-index.html')
 
