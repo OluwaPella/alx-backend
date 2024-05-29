@@ -11,7 +11,9 @@ class MRUCache(BaseCaching):
     """
 
     def __init__(self):
-        """Initiliaze"""
+        """Initiliaze
+        """
+
         super().__init__()
         self.cache_data = OrderedDict()
 
@@ -21,12 +23,13 @@ class MRUCache(BaseCaching):
         """
         if key is None or item is None:
             return
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            mru_key = self.cache_data.popitem(key, last=False)
-            print("DISCARD", mru_key)
-            self.cache_data.move_to_end(key, last=False)
-        else:
-            self.cache_data[key] = item
+        if key not in self.cache_data:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                mru_key = self.cache_data.popitem(key, last=False)
+                print("DISCARD", mru_key)
+                self.cache_data.move_to_end(key, last=False)
+            else:
+                self.cache_data[key] = item
 
         
     def get(self, key):
