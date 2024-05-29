@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+
 """initialize flask app 
 to use babel
 """
-
 from flask import Flask, render_template
 from babel import Babel
 
