@@ -2,10 +2,11 @@
 """
 tasks for flask app
 """
-from flask import Flask, render_template
 from babel import Babel
+from flask import Flask, render_template
 
-class config:
+
+class Config:
     """Represents a Flask Babel configuration.
     """
     LANGUAGES = ["en", "fr"]
@@ -14,7 +15,7 @@ class config:
 
 
 app = Flask(__name__)
-app.config.from_object(config)
+app.config.from_object(Config)
 babel = Babel(app)
 
 @app.route('/')
