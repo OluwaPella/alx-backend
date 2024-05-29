@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""MRUCache
+"""Most Recently Used caching
 """
 from collections import OrderedDict
 from base_caching import BaseCaching
