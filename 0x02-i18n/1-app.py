@@ -2,9 +2,11 @@
 """
 tasks for flask app
 """
-from babel import Babel
-from flask import Flask, render_template
 
+from flask import Flask, render_template
+from babel import Babel
+
+app = Flask(__name__)
 
 class Config:
     """Represents a Flask Babel configuration.
@@ -14,7 +16,6 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
 
