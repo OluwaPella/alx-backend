@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-initialize flask app 
+"""initialize flask app 
 to use babel
 """
 
@@ -24,7 +23,7 @@ babel = Babel(app)
 
 @app.route('/')
 def get_index():
-    """return index.html
+    """return 1-index.html
     """
     return render_template('1-index.html')
 
