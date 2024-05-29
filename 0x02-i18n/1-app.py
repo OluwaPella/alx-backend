@@ -5,14 +5,6 @@ tasks for flask app
 from flask import Flask, render_template
 from babel import Babel
 
-app = Flask(__name__)
-babel = Babel(app)
-
-@app.route('/')
-def get_index():
-    """return index.html
-    """
-    return render_template('1-index.html')
 class config:
     """Represents a Flask Babel configuration.
     """
@@ -20,7 +12,16 @@ class config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
+app = Flask(__name__)
 app.config.from_object(config)
+babel = Babel(app)
+
+@app.route('/')
+def get_index():
+    """return index.html
+    """
+    return render_template('1-index.html')
 
 
 if __name__ == "__main__":
