@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-"""
-Task1 -initialize flask app 
+"""Task1 -initialize flask app 
 to use babel.
 """
 from flask import Flask, render_template
