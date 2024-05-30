@@ -23,7 +23,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_lacale():
+def get_locale():
     """
     use he locale from the header
     or we support de/fr/en.
