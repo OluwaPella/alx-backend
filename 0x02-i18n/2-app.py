@@ -3,7 +3,7 @@
 """Task1 -initialize flask app 
 to use babel.
 """
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
@@ -23,8 +23,7 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_lacale():
-    """
-     use the locale from the header
+    """use he locale from the header
     or we support de/fr/en.
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
