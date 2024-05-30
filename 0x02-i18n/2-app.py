@@ -21,11 +21,6 @@ app.config.from_object(Config)
 
 babel = Babel(app)
 
-@app.route('/')
-def get_index():
-    """return 2-index.html.
-    """
-    return render_template('2-index.html')
 @babel.localeselector
 def get_lacale():
     """
@@ -39,7 +34,14 @@ def get_lacale():
     otherwise use the locale from the header
     or we support de/fr/en.
     """
-    return request.accept_languages.best_match(['de', 'fr', 'en'])
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+@app.route('/')
+def get_index():
+    """return 2-index.html.
+    """
+    return render_template('2-index.html')
+
 
 if __name__ == "__main__":
     
