@@ -24,14 +24,7 @@ babel = Babel(app)
 @babel.localeselector
 def get_lacale():
     """
-    if the user is logged in,
-    use the locale from the user settings
-    """
-    user = getattr(g, 'user', None)
-    if user is not None:
-        return user.locale
-    """
-    otherwise use the locale from the header
+     use the locale from the header
     or we support de/fr/en.
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
