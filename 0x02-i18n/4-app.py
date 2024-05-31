@@ -26,8 +26,7 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
-    """
-    use he locale from the header
+    """use he locale from the header
     or we support de/fr/en.
     """
     locale = request.args.get('locale')
