@@ -26,31 +26,24 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
-    """use he locale from the header
+    """
+    use he locale from the header
     or we support de/fr/en.
     """
-
-    supported_locales = app.config['LANGUAGES'] 
-    locale = request.args.get('locale')
-
-    if locale and locale in supported_locales:
-        return locale
-    
-    user_preferences = request.accept_languages.best_match(supported_locales)
-    if user_preferences:
-        return user_preferences
-    return app.config.get('DEFAULT_LOCALE', 'en')
+    user = getattr(g, 'user', None)
+    if user is not None:
+        return user.locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def get_index():
-    
-    locale = get_locale()
     """
-    return 2-index.html
+    return 2-index.html.
+
     """
 
-    return render_template('3-index.html', locale=locale)
+    return render_template('3-index.html')
 
 
 if __name__ == "__main__":
