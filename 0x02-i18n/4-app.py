@@ -30,10 +30,11 @@ def get_locale():
     use he locale from the header
     or we support de/fr/en.
     """
-    user = getattr(g, 'user', None)
-    if user is not None:
-        return user.locale
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    locale = request.args.get('locale')
+    supported_locale = app.config['LANGUAGES']
+    if locale and locale in supported_locale:
+        return locale
+    return request.accept_languages.best_match(supported_locale)
 
 
 @app.route('/')
@@ -42,8 +43,8 @@ def get_index():
     return 2-index.html.
 
     """
-
-    return render_template('3-index.html')
+    locale = get_locale()
+    return render_template('3-index.html', locale=locale)
 
 
 if __name__ == "__main__":
