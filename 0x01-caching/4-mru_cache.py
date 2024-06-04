@@ -36,5 +36,6 @@ class MRUCache(BaseCaching):
         if key is  None or key not in  self.cache_data:
             return None
         else:
-            return self.cache_data.move_to_end(key, last=False)
+            self.cache_data.move_to_end(key, last=False)
+            return self.cache_data(key, None)
     
