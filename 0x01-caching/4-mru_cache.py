@@ -37,4 +37,4 @@ class MRUCache(BaseCaching):
             return None
         else:
             self.cache_data.move_to_end(key, last=False)
-        return self.cache_data(key, None)
+        return self.cache_data(key)
