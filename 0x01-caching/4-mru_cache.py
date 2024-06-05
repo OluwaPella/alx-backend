@@ -15,7 +15,7 @@ class MRUCache(BaseCaching):
         """
         super().__init__()
         self.cache_data = OrderedDict()
-        
+
     def put(self, key, item):
         """adding item to cache.
         """
