@@ -25,7 +25,7 @@ class LFUCache(BaseCaching):
                 mru_key, _ = self.cache_data.popitem(last=False)
                 print("DISCARD:", mru_key)
             self.cache_data[key] = item
-            self.cache_data.move_to_end(key, last=False)
+            self.cache_data.move_to_end(key, last=True)
         else:
             self.cache_data[key] = item
 
