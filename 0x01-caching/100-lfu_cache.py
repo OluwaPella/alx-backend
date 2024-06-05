@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+"""LEAST FREQUENCY Used caching.  """
+from collections import OrderedDict
+from base_caching import BaseCaching
+
+
+class LFUCache(BaseCaching):
+    """
+    LFUCache is a caching algorithm.
+    """
+
+    def __init__(self):
+        """Initiliaze
+        """
+        super().__init__()
+        self.cache_data = OrderedDict()
+
+    def put(self, key, item):
+        """adding item to cache.
+        """
+        if key is None or item is None:
+            return
+        if key not in self.cache_data:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                mru_key, _ = self.cache_data.popitem(last=False)
+                print("DISCARD:", mru_key)
+            self.cache_data[key] = item
+            self.cache_data.move_to_end(key, last=False)
+        else:
+            self.cache_data[key] = item
+
+    def get(self, key):
+        """getting data from cache using the key.
+        """
+        if key is None or key not in self.cache_data:
+            return None
+        else:
+            self.cache_data.move_to_end(key, last=False)
+            return self.cache_data[key]
