@@ -53,7 +53,7 @@ def get_user(user_id):
         return None
     return users.get(user_id)
 
-@app.before_request       
+app.before_request      
 def before_request():
     """
     feches user information before each request 
