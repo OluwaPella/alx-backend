@@ -30,6 +30,24 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+def get_user(user_id):
+    """
+    get the user
+    """
+    if not user_id:
+        login_as_id = request.args.get('login_as')
+        user_id = login_as_id
+    else:
+        return None
+    return users.get(user_id)
+
+@app.before_request      
+def before_request():
+    """
+    feches user information before each request 
+    """
+    g.user = get_user(request.args.get('login_as'))
+
 @babel.localeselector
 def get_locale():
     """
@@ -42,23 +60,6 @@ def get_locale():
         return locale
     return request.accept_languages.best_match(supported_locale)
 
-def get_user(user_id):
-    """
-    get the user
-    """
-    if not user_id:
-        login_as_id = request.args.get('login_as')
-        user_id = login_as_id
-    else:
-        return None
-    return users.get(user_id)
-
-app.before_request      
-def before_request():
-    """
-    feches user information before each request 
-    """
-    g.user = get_user(request.args.get('login_as'))
 
 
 @app.route('/')
