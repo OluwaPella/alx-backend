@@ -4,7 +4,7 @@
 Task1 -initialize flask app
 to use babel.
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 
@@ -55,9 +55,10 @@ def get_user(user_id):
 
 @app.before_request       
 def before_request():
-    
-    
-
+    """
+    feches user information before each request 
+    """
+    g.users = get_user(request.args.get('login_as'))
 
 
 @app.route('/')
