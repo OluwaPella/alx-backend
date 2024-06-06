@@ -30,7 +30,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
-def get_user(user_id):
+def get_user() -> dict:
     """
     get the user
     """
@@ -46,7 +46,7 @@ def before_request():
     """
     feches user information before each request 
     """
-    g.user = get_user(request.args.get('login_as'))
+    g.user = get_user()
 
 @babel.localeselector
 def get_locale():
