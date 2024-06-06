@@ -58,7 +58,7 @@ def before_request():
     """
     feches user information before each request 
     """
-    g.users = get_user(request.args.get('login_as'))
+    g.user = get_user(request.args.get('login_as'))
 
 
 @app.route('/')
