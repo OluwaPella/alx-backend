@@ -34,12 +34,10 @@ def get_user() -> dict:
     """
     get the user
     """
-    if not user_id:
-        login_as_id = request.args.get('login_as')
-        user_id = login_as_id
-    else:
-        return None
-    return users.get(user_id)
+    login_as_id = request.args.get('login_as')
+    if login_as_id:
+        return users.get(int(login_as_id))
+    return None
 
 @app.before_request      
 def before_request():
